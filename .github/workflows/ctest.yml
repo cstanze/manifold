@@ -33,10 +33,11 @@ jobs:
           - os: ubuntu-latest
             c_compiler: gcc
             cpp_compiler: g++
+        exclude:
+          # clang/++ forced c++14, we need c++20
           - os: ubuntu-latest
             c_compiler: clang
             cpp_compiler: clang++
-        exclude:
           - os: windows-latest
             c_compiler: gcc
           - os: windows-latest
@@ -76,3 +77,10 @@ jobs:
       # Execute tests defined by the CMake configuration. Note that --build-config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: ctest --build-config ${{ matrix.build_type }}
+    
+    - name: Upload CTest logs
+      if: failure()
+      uses: actions/upload-artifcact@v4
+      with:
+        name: ctest-logs
+        path: builds/Testing/Temporary/*.log
