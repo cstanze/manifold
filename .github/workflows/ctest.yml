@@ -37,7 +37,6 @@ jobs:
           # clang/++ forced c++14, we need c++20
           - os: ubuntu-latest
             c_compiler: clang
-            cpp_compiler: clang++
           - os: windows-latest
             c_compiler: gcc
           - os: windows-latest
