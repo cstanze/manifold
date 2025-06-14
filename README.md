@@ -30,7 +30,7 @@ include(FetchContent)
 
 FetchContent_Declare(
   manifold
-  GIT_REPOSITORY https://git.julesnieves.org/jules/manifold.git
+  GIT_REPOSITORY https://github.com/cstanze/manifold.git
   GIT_BRANCH main
 )
 
