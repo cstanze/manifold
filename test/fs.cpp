@@ -40,7 +40,7 @@ public:
 /// cwd(), home()
 TEST_F(FilesystemTest, Environment) {
   std::filesystem::current_path(testDir);
-  EXPECT_EQ(testDir, manifold::fs::cwd());
+  EXPECT_EQ(std::filesystem::absolute(testDir), manifold::fs::cwd());
 
   EXPECT_EQ(std::filesystem::path(manifold::env::get("HOME")),
             manifold::fs::home());
