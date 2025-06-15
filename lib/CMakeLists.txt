@@ -13,7 +13,7 @@ add_library(manifold
 )
 
 add_library(manifold::manifold ALIAS manifold)
-option(MANIFOLD_DEBUG "Enable memory debugging." OFF)
+option(MANIFOLD_DEBUG "Enable (simple) debugging fixture" OFF)
 
 if(${MANIFOLD_DEBUG} OR "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
   target_compile_definitions(manifold

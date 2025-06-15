@@ -3803,9 +3803,13 @@ inline RESULT_INLINE_VISIBILITY constexpr RESULT_NS_IMPL::detail::
 
 //-----------------------------------------------------------------------------
 
+
 template <typename T, typename E>
 inline RESULT_INLINE_VISIBILITY
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdtor-name"
     RESULT_NS_IMPL::detail::result_union<T, E, false>::~result_union() noexcept(
+#pragma GCC diagnostic pop
         std::is_nothrow_destructible<T>::value
             &&std::is_nothrow_destructible<E>::value) {
   destroy();

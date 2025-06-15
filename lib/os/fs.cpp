@@ -40,7 +40,7 @@ auto write_bytes(const path_type &path, const std::vector<u8> &bytes)
   }
 
   std::ofstream file(path, std::ios::binary);
-  file.write((char *)bytes.data(), bytes.size());
+  file.write(reinterpret_cast<const char*>(bytes.data()), bytes.size());
   file.close();
 
   return manifold::result<void, fs::Error>();

@@ -96,7 +96,7 @@ auto trim(const std::string &str) -> std::string {
 
 auto as_cstr(const std::string &str) -> const i8 * {
   auto *cstr = new i8[str.length() + 1];
-  std::strcpy((char*)cstr, str.c_str());
+  std::strcpy(const_cast<char*>(cstr), str.c_str());
   cstr[str.length()] = '\0';
 
   return cstr;
