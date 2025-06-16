@@ -19,7 +19,7 @@ TEST(StringTest, SplitReplaceJoin) {
   EXPECT_EQ(split[0], "hello");
   EXPECT_EQ(split[1], "manifold");
   EXPECT_EQ(split[2], "strings");
-  
+
   auto split2 = manifold::str::split("", ";");
   EXPECT_EQ(split2.size(), 0);
 

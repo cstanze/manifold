@@ -29,9 +29,9 @@
 #include "../_defines.hpp"
 #include <algorithm>
 #include <cstring>
+#include <span>
 #include <string>
 #include <vector>
-#include <span>
 
 namespace manifold::str {
 
@@ -50,8 +50,7 @@ auto replace_all(const std::string &str, const std::string &from,
                  const std::string &to) -> std::string;
 
 /// Joins a vector of strings into a single string
-auto join(const std::vector<std::string> &strs, const std::string &delim = "");
-auto join(const std::span<const std::string> &strs, const std::string &delim = "")
+auto join(const std::vector<std::string> &strs, const std::string &delim = "")
     -> std::string;
 
 /// Converts a string to lowercase

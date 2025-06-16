@@ -5,7 +5,8 @@ namespace manifold::str {
 
 auto ends_with(const std::string &str, const std::string &suffix) -> bool {
   if (str.length() >= suffix.length()) {
-    return (0 == str.compare(str.length() - suffix.length(), suffix.length(), suffix));
+    return (0 == str.compare(str.length() - suffix.length(), suffix.length(),
+                             suffix));
   }
 
   return false;
@@ -19,10 +20,11 @@ auto starts_with(const std::string &str, const std::string &prefix) -> bool {
   return false;
 }
 
-auto split(const std::string &str, const std::string &delim) -> std::vector<std::string> {
+auto split(const std::string &str, const std::string &delim)
+    -> std::vector<std::string> {
   if (str.empty())
     return {};
-  
+
   if (delim.empty()) {
     // split into chars
     std::vector<std::string> result;
@@ -47,7 +49,7 @@ auto split(const std::string &str, const std::string &delim) -> std::vector<std:
 }
 
 auto replace_all(const std::string &str, const std::string &from,
-                const std::string &to) -> std::string {
+                 const std::string &to) -> std::string {
   std::string result = str;
   size_t start_pos = 0;
 
@@ -59,11 +61,7 @@ auto replace_all(const std::string &str, const std::string &from,
   return result;
 }
 
-auto join(const std::vector<std::string> &strs, const std::string &delim) {
-  join(std::span{strs}, "");
-}
-
-auto join(const std::span<const std::string> &strs, const std::string &delim)
+auto join(const std::vector<std::string> &strs, const std::string &delim)
     -> std::string {
   std::string result;
   for (size_t i = 0; i < strs.size(); i++) {
@@ -101,9 +99,9 @@ auto trim(const std::string &str) -> std::string {
 
 auto as_cstr(const std::string &str) -> const i8 * {
   auto *cstr = new i8[str.length() + 1];
-  std::strcpy(const_cast<char*>(cstr), str.c_str());
+  std::strcpy(const_cast<char *>(cstr), str.c_str());
   cstr[str.length()] = '\0';
 
   return cstr;
 }
-}
+} // namespace manifold::str
