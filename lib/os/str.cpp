@@ -1,4 +1,5 @@
 #include <manifold/os/str.hpp>
+#include <span>
 
 namespace manifold::str {
 
@@ -58,7 +59,11 @@ auto replace_all(const std::string &str, const std::string &from,
   return result;
 }
 
-auto join(const std::vector<std::string> &strs, const std::string &delim)
+auto join(const std::vector<std::string> &strs, const std::string &delim) {
+  join(std::span{strs}, "");
+}
+
+auto join(const std::span<const std::string> &strs, const std::string &delim)
     -> std::string {
   std::string result;
   for (size_t i = 0; i < strs.size(); i++) {
